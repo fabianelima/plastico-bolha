@@ -40,7 +40,7 @@ $ ->
 
 			i = 0
 			while i <= size
-				$('.bubbles').append('<div></div>')
+				$('.bubbles').append('<div><img src="assets/img/bubble.png"></div>')
 				i++
 
 		pause: ->
@@ -68,7 +68,8 @@ $ ->
 
 		popBubble: ($el) ->
 			ctrl++
-			$el.css { pointerEvents: 'none', background: 'black' }
+			$el.css { pointerEvents: 'none' }
+			$el.html('<img src="assets/img/burst.png">')
 
 			if ctrl is size + 1
 				clearInterval(starttimer)

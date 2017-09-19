@@ -53,7 +53,7 @@
         i = 0;
         results = [];
         while (i <= size) {
-          $('.bubbles').append('<div></div>');
+          $('.bubbles').append('<div><img src="assets/img/bubble.png"></div>');
           results.push(i++);
         }
         return results;
@@ -88,9 +88,9 @@
       popBubble: function($el) {
         ctrl++;
         $el.css({
-          pointerEvents: 'none',
-          background: 'black'
+          pointerEvents: 'none'
         });
+        $el.html('<img src="assets/img/burst.png">');
         if (ctrl === size + 1) {
           clearInterval(starttimer);
           $('.dimmer').fadeIn();

@@ -129,12 +129,12 @@ main .content .bubbles {
   height: 100%;
   padding: 0.3em;
   margin: auto;
+  background: #ff0055;
 }
 main .content .bubbles div {
-  padding: 1.9em 2em;
-  margin: 0.2em;
+  width: 3.8em;
+  margin: 0.2em 0.38em;
   float: left;
-  background: #ff0055;
   cursor: pointer;
 }
 main .blink {
