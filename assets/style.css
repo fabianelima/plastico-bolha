@@ -1,0 +1,149 @@
+/**STYLE: Template versão 4.0 **/
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  -webkit-text-size-adjust: none;
+  background: url('img/loading.gif') no-repeat center;
+}
+main {
+  opacity: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #e7e7e7;
+  max-width: 1280px;
+  max-height: 720px;
+  overflow: hidden;
+  margin: auto;
+  font-size: 1.5em;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 0 1.5em #404040;
+  border-radius: 0.2em;
+}
+main img {
+  width: 100%;
+  display: block;
+}
+main h1,
+main h2,
+main h3 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  color: #ff0055;
+  text-transform: uppercase;
+}
+main p {
+  margin-bottom: 0.5em;
+}
+main ul,
+main ol {
+  margin-left: 2em;
+  text-align: left;
+}
+main button {
+  padding: 0.3em 2em;
+  margin-top: 0.7em;
+  background: #ff0055;
+  border-radius: 1em;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+  font-family: inherit;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+main button:hover {
+  box-shadow: 0 0.1em 0.1em #404040;
+}
+main button:active {
+  transform: translateY(0.1em);
+}
+main .dimmer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 6;
+}
+main .dimmer .modal {
+  position: absolute;
+  background: white;
+  width: 56%;
+  padding: 2%;
+  top: 20%;
+  left: 20%;
+  box-shadow: 0 0 1em black;
+  border-radius: 0.5em;
+  text-align: center;
+}
+main .content {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+main .content .timer {
+  position: absolute;
+  text-align: center;
+  width: 10%;
+  left: 2%;
+  top: 2%;
+}
+main .content .timer .time {
+  color: #ff0055;
+  font-size: 2em;
+  font-weight: 900;
+}
+main .content .timer .bar {
+  border: 0.2em solid #ff0055;
+  background: black;
+  width: 100%;
+  height: 2em;
+}
+main .content .timer .bar .innerbar {
+  background: #ff0055;
+  width: 100%;
+  height: 100%;
+}
+main .content .bubbles {
+  background: #769;
+  width: 60%;
+  height: 100%;
+  margin: auto;
+}
+main .blink {
+  animation: blink 0.5s linear infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@media screen and (max-width: 1280px) {
+  main {
+    font-size: 2vw;
+    width: 100vw;
+    height: 56vw;
+  }
+}
+@media screen and (max-height: 720px) {
+  main {
+    font-size: 3.5vh;
+    width: 177vh;
+    height: 100vh;
+  }
+}
