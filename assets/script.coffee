@@ -18,7 +18,7 @@ preload = (imgs) ->
 
 	if counter is imgs.length
 		$('main').css { opacity: '1' }
-		$('body').css { background: '#e7e7e7' }
+		$('body').css { background: 'white' }
 
 $(window).on 'load', -> preload(imgs)
 
@@ -27,29 +27,29 @@ $(window).on 'load', -> preload(imgs)
 $ ->
 	paused = true
 	starttimer = undefined
-	data =	[]
+	size = 48
+	ctrl = 0
 	func =
 		dismiss: ->
 			paused = false
-			$('.content').fadeIn()
 			$('.dimmer').fadeOut()
 
 		start: ->
 			func.timer()
 			func.dismiss()
-			# coloca as coisa no lugar quando inicia o objeto.
-			# caso não precise colocar conteúdo dinamicamente,
-			# essa função pode ser eliminada e substituída pela
-			# função "dismiss()"
+
+			i = 0
+			while i <= size
+				$('.bubbles').append('<div></div>')
+				i++
 
 		pause: ->
 			paused = true
 			$('.dimmer').fadeIn()
-			$('.content').fadeOut()
 			$('.modal').html('<h1>Jogo pausado</h1><p>Clique no botão abaixo para retomar.</p><button class="dismiss">Continuar</button>')
 
 		timer: ->
-			s = 45
+			s = 20
 			starttimer = setInterval ->
 				if paused isnt true
 					if s > 0
@@ -60,12 +60,24 @@ $ ->
 						clearInterval(starttimer)
 
 						$('.dimmer').fadeIn()
+						$('.content').fadeOut()
 						$('.modal').html('<h1>Acabou o tempo!</h1><p>Clique no botão abaixo para tentar mais uma vez.</p><button class="again">Restart</button>')
 
-					$('.bar .innerbar').css { width: (100 / 45) * s + '%' }
+					$('.bar .innerbar').css { width: (100 / 20) * s + '%' }
 			, 1000
+
+		popBubble: ($el) ->
+			ctrl++
+			$el.css { pointerEvents: 'none', background: 'black' }
+
+			if ctrl is size + 1
+				clearInterval(starttimer)
+				$('.dimmer').fadeIn()
+				$('.modal').html('<h1>Fim de jogo!</h1><p>Você conseguiu estourar todas as bolhas! Clique no botão abaixo para jogar mais uma vez.</p><button class="again">Restart</button>')
 
 # ----- Eventos ----- #
 	$(document).on 'click', '.start', -> func.start()
 	$(document).on 'click', '.dismiss', -> func.dismiss()
+	$(document).on 'click', '.pause', -> func.pause()
+	$(document).on 'click', '.bubbles div', -> func.popBubble $(this)
 	$(document).on 'click', '.again', -> location.reload()

@@ -94,7 +94,11 @@ main .content {
   z-index: 5;
   width: 100%;
   height: 100%;
-  display: none;
+}
+main .content .pause {
+  position: absolute;
+  top: 2%;
+  right: 2%;
 }
 main .content .timer {
   position: absolute;
@@ -110,7 +114,8 @@ main .content .timer .time {
 }
 main .content .timer .bar {
   border: 0.2em solid #ff0055;
-  background: black;
+  box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.6);
+  background: #e7e7e7;
   width: 100%;
   height: 2em;
 }
@@ -120,10 +125,17 @@ main .content .timer .bar .innerbar {
   height: 100%;
 }
 main .content .bubbles {
-  background: #769;
   width: 60%;
   height: 100%;
+  padding: 0.3em;
   margin: auto;
+}
+main .content .bubbles div {
+  padding: 1.9em 2em;
+  margin: 0.2em;
+  float: left;
+  background: #ff0055;
+  cursor: pointer;
 }
 main .blink {
   animation: blink 0.5s linear infinite;
