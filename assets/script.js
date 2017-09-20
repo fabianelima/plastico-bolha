@@ -36,10 +36,11 @@
   });
 
   $(function() {
-    var ctrl, func, paused, size, starttimer, wrap;
+    var ctrl, func, paused, size, starttimer, time, wrap;
     paused = true;
     starttimer = void 0;
     size = 48;
+    time = 20;
     ctrl = 0;
     wrap = new Audio('assets/wrap.mp3');
     func = {
@@ -47,17 +48,42 @@
         paused = false;
         return $('.dimmer').fadeOut();
       },
+      mode: function($el) {
+        if ($el.val() === 'easy') {
+          size = 48;
+          return time = 20;
+        } else if ($el.val() === 'medium') {
+          size = 63;
+          return time = 25;
+        } else {
+          size = 80;
+          return time = 30;
+        }
+      },
       start: function() {
-        var i, results;
+        var i;
         func.timer();
         func.dismiss();
+        $('.content').fadeIn();
         i = 0;
-        results = [];
         while (i <= size) {
           $('.bubbles').append('<div><img src="assets/img/bubble.png"></div>');
-          results.push(i++);
+          i++;
         }
-        return results;
+        if (size === 48) {
+          $('.bubbles div').css({
+            width: '3.8em'
+          });
+        } else if (size === 63) {
+          $('.bubbles div').css({
+            width: '3.25em'
+          });
+        } else {
+          $('.bubbles div').css({
+            width: '2.77em'
+          });
+        }
+        return console.log(size, $('.bubbles div').css('width'));
       },
       pause: function() {
         paused = true;
@@ -66,7 +92,7 @@
       },
       timer: function() {
         var s;
-        s = 20;
+        s = time;
         return starttimer = setInterval(function() {
           if (paused !== true) {
             if (s > 0) {
@@ -80,7 +106,7 @@
               $('.modal').html('<h1>Acabou o tempo!</h1><p>Você estourou ' + ctrl + ' bolhas, o que corresponde a ' + ((ctrl * 100) / size).toFixed(0) + '% do total. Clique no botão abaixo para tentar mais uma vez.</p><button class="again">Restart</button>');
             }
             return $('.bar .innerbar').css({
-              width: (100 / 20) * s + '%'
+              width: (100 / time) * s + '%'
             });
           }
         }, 1000);
@@ -99,6 +125,11 @@
         }
       }
     };
+    $(document).ready(function() {
+      return $('.mode').change(function() {
+        return func.mode($(this));
+      });
+    });
     $(document).on('click', '.start', function() {
       return func.start();
     });

@@ -68,6 +68,8 @@ main {
 			box-shadow: 0 0 1em black;
 			border-radius: 0.5em;
 			text-align: center;
+
+			label { cursor: pointer; }
 		}
 	}
 
@@ -76,6 +78,7 @@ main {
 		z-index: 5;
 		width: 100%;
 		height: 100%;
+		display: none;
 
 		.pause {
 			position: absolute;
@@ -121,7 +124,6 @@ main {
 			user-select: none;
 
 			div {
-				width: 3.8em;
 				margin: 0.2em 0.38em;
 				float: left;
 				cursor: pointer;

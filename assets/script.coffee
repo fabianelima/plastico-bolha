@@ -28,6 +28,7 @@ $ ->
 	paused = true
 	starttimer = undefined
 	size = 48
+	time = 20
 	ctrl = 0
 	wrap = new Audio('assets/wrap.mp3')
 	func =
@@ -35,14 +36,32 @@ $ ->
 			paused = false
 			$('.dimmer').fadeOut()
 
+		mode: ($el) ->
+			if $el.val() is 'easy'
+				size = 48
+				time = 20
+			else if $el.val() is 'medium'
+				size = 63
+				time = 25
+			else
+				size = 80
+				time = 30
+
 		start: ->
 			func.timer()
 			func.dismiss()
+			$('.content').fadeIn()
 
 			i = 0
 			while i <= size
 				$('.bubbles').append('<div><img src="assets/img/bubble.png"></div>')
 				i++
+
+			if size is 48 then $('.bubbles div').css { width: '3.8em' }
+			else if size is 63 then $('.bubbles div').css { width: '3.25em' }
+			else $('.bubbles div').css { width: '2.77em' }
+
+			console.log size, $('.bubbles div').css('width')
 
 		pause: ->
 			paused = true
@@ -50,7 +69,7 @@ $ ->
 			$('.modal').html('<h1>Jogo pausado</h1><p>Clique no botão abaixo para retomar.</p><button class="dismiss">Continuar</button>')
 
 		timer: ->
-			s = 20
+			s = time
 			starttimer = setInterval ->
 				if paused isnt true
 					if s > 0
@@ -63,7 +82,7 @@ $ ->
 						$('.dimmer').fadeIn()
 						$('.modal').html('<h1>Acabou o tempo!</h1><p>Você estourou ' + ctrl + ' bolhas, o que corresponde a ' + ((ctrl * 100) / size).toFixed(0) + '% do total. Clique no botão abaixo para tentar mais uma vez.</p><button class="again">Restart</button>')
 
-					$('.bar .innerbar').css { width: (100 / 20) * s + '%' }
+					$('.bar .innerbar').css { width: (100 / time) * s + '%' }
 			, 1000
 
 		popBubble: ($el) ->
@@ -78,6 +97,7 @@ $ ->
 				$('.modal').html('<h1>Fim de jogo!</h1><p>Você conseguiu estourar todas as bolhas! Clique no botão abaixo para jogar mais uma vez.</p><button class="again">Restart</button>')
 
 # ----- Eventos ----- #
+	$(document).ready -> $('.mode').change -> func.mode $(this)
 	$(document).on 'click', '.start', -> func.start()
 	$(document).on 'click', '.dismiss', -> func.dismiss()
 	$(document).on 'click', '.pause', -> func.pause()
