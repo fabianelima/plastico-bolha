@@ -129,7 +129,9 @@ main .content .bubbles {
   height: 100%;
   padding: 0.3em;
   margin: auto;
-  background: #ff0055;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 main .content .bubbles div {
   width: 3.8em;

@@ -29,6 +29,7 @@ $ ->
 	starttimer = undefined
 	size = 48
 	ctrl = 0
+	wrap = new Audio('assets/wrap.mp3')
 	func =
 		dismiss: ->
 			paused = false
@@ -60,14 +61,14 @@ $ ->
 						clearInterval(starttimer)
 
 						$('.dimmer').fadeIn()
-						$('.content').fadeOut()
-						$('.modal').html('<h1>Acabou o tempo!</h1><p>Clique no botão abaixo para tentar mais uma vez.</p><button class="again">Restart</button>')
+						$('.modal').html('<h1>Acabou o tempo!</h1><p>Você estourou ' + ctrl + ' bolhas, o que corresponde a ' + ((ctrl * 100) / size).toFixed(0) + '% do total. Clique no botão abaixo para tentar mais uma vez.</p><button class="again">Restart</button>')
 
 					$('.bar .innerbar').css { width: (100 / 20) * s + '%' }
 			, 1000
 
 		popBubble: ($el) ->
 			ctrl++
+			wrap.play()
 			$el.css { pointerEvents: 'none' }
 			$el.html('<img src="assets/img/burst.png">')
 
