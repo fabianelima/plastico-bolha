@@ -58,7 +58,7 @@ $ ->
 				i++
 
 			if size is 48 then $('.bubbles div').css { width: '3.8em' }
-			else if size is 63 then $('.bubbles div').css { width: '3.25em' }
+			else if size is 63 then $('.bubbles div').css { width: '3.2em' }
 			else $('.bubbles div').css { width: '2.77em' }
 
 		pause: ->

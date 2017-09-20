@@ -76,7 +76,7 @@
           });
         } else if (size === 63) {
           return $('.bubbles div').css({
-            width: '3.25em'
+            width: '3.2em'
           });
         } else {
           return $('.bubbles div').css({
