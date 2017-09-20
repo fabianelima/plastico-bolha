@@ -149,14 +149,14 @@ main .blink {
 }
 @media screen and (max-width: 1280px) {
   main {
-    font-size: 2vw;
+    font-size: 1.85vw;
     width: 100vw;
     height: 56vw;
   }
 }
 @media screen and (max-height: 720px) {
   main {
-    font-size: 3.5vh;
+    font-size: 3.3vh;
     width: 177vh;
     height: 100vh;
   }
