@@ -61,8 +61,6 @@ $ ->
 			else if size is 63 then $('.bubbles div').css { width: '3.25em' }
 			else $('.bubbles div').css { width: '2.77em' }
 
-			console.log size, $('.bubbles div').css('width')
-
 		pause: ->
 			paused = true
 			$('.dimmer').fadeIn()

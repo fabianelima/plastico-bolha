@@ -71,19 +71,18 @@
           i++;
         }
         if (size === 48) {
-          $('.bubbles div').css({
+          return $('.bubbles div').css({
             width: '3.8em'
           });
         } else if (size === 63) {
-          $('.bubbles div').css({
+          return $('.bubbles div').css({
             width: '3.25em'
           });
         } else {
-          $('.bubbles div').css({
+          return $('.bubbles div').css({
             width: '2.77em'
           });
         }
-        return console.log(size, $('.bubbles div').css('width'));
       },
       pause: function() {
         paused = true;
