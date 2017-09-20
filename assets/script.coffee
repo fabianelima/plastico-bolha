@@ -7,7 +7,7 @@
 ###
 
 # ----- Pré-carregamento das imagens ----- #
-imgs =	['assets/img/help.png']
+imgs =	['assets/img/bubble.png', 'assets/img/burst.png']
 
 preload = (imgs) ->
 	counter = 0

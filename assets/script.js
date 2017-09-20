@@ -10,7 +10,7 @@
 (function() {
   var imgs, preload;
 
-  imgs = ['assets/img/help.png'];
+  imgs = ['assets/img/bubble.png', 'assets/img/burst.png'];
 
   preload = function(imgs) {
     var counter;
